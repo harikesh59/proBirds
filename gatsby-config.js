@@ -1,4 +1,5 @@
 module.exports = {
+pathPrefix: "probirds",
   plugins: [
     {
       resolve: "gatsby-theme-portfolio-minimal",
