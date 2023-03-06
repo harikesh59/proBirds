@@ -27,21 +27,21 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-6e753ec2639086e1e19f.js"
+    "url": "webpack-runtime-f1656371f818e950f745.js"
   },
   {
     "url": "framework-c6b9d3178e03852a7d83.js"
   },
   {
-    "url": "app-1869329c55d5336c2933.js"
+    "url": "app-4b549869dbdeb6f7e842.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "45c9966e17e075055b01da2060f30ba1"
+    "revision": "a618d31fdb9a7d918e261a3b6b0aba95"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "02c41a32f3270014e47854472b15ae0c"
+    "revision": "c752db8c3c61c4c28bc95700edbd6079"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -146,12 +146,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/probirds`), ``)
+  pathname = pathname.replace(new RegExp(`^/proBirds`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/probirds/app-1869329c55d5336c2933.js`))) {
+  if (!resources || !(await caches.match(`/proBirds/app-4b549869dbdeb6f7e842.js`))) {
     return await fetch(event.request)
   }
 
@@ -164,7 +164,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/probirds/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/proBirds/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
